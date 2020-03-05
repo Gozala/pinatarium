@@ -1,7 +1,6 @@
 class Effect {
   static async loadDocument(cid) {
     try {
-      //ipfs.io/ipfs/QmRYPQ1HzXXNbKgAQk6MxMKjme7LjdJu2GCJ8tx6jsHjNt
       const request = await fetch(`https://ipfs.io/ipfs/${cid}/document.json`)
       const content = await request.json()
       return { content }
