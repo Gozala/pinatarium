@@ -185,7 +185,8 @@ class Main {
         this.bookmarked = true
         this.cid = cid
         const base = new URL(document.URL)
-        const url = new URL(`/${cid}`, base)
+        const path = base.pathname.endsWith("/") ? `../${cid}` : `./${cid}`
+        const url = new URL(path, base)
         url.search = base.search
         url.hash = base.hash
         history.pushState({ cid }, "", url.href)
