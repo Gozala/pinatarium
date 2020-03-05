@@ -182,13 +182,14 @@ class Main {
 
       if (cid) {
         this.bookmarked = true
-        this.cid = cid
         const base = new URL(document.URL)
-        const path = base.pathname.endsWith("/") ? `../${cid}` : `./${cid}`
+        const path =
+          base.pathname.endsWith("/") && this.cid ? `../${cid}` : `./${cid}`
         const url = new URL(path, base)
         url.search = base.search
         url.hash = base.hash
         history.pushState({ cid }, "", url.href)
+        this.cid = cid
       }
     } catch (error) {
       this.publishDisabled = false
